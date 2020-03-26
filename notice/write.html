@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h3>글 추가</h3>
+
+    <div align="center">
+        <form name="frm" method="post">
+            <table border="1">
+                <tr>
+                    <th>작성자</th>
+                    <td>
+                        <input name="writer">
+                    </td>
+                </tr>
+                <tr>
+                    <th>제목</th>
+                    <td>
+                        <input name="title">
+                    </td>
+                </tr>
+                <tr>
+                    <th>내용</th>
+                    <td>
+                        <textarea name="content"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button onclick="regist()">등록</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script>
+        function regist() {
+            frm.action = "/regist"; // server의 url
+            frm.submit();
+        }
+    </script>
+</body>
+
+</html>

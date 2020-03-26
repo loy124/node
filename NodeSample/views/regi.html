@@ -1,0 +1,88 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .center {
+            margin: auto;
+            width: 60%;
+            border: 3px solid #ff0000;
+            padding: 10px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>account</h1>
+
+    <div class="center">
+        <form action="regiAf" method="POST">
+
+            <table border="1">
+                <tr>
+                    <th>
+                        아이디
+                    </th>
+                    <td>
+                        <input type="text" id="id" name="id" size="20">
+                        <p id="idcheck" style="font-size: 8px;"></p>
+                        <input type="button" id="idBtn" value="id 확인">
+                    </td>
+                </tr>
+                <tr>
+                    <th>패스워드</th>
+                    <td><input type="password" name="pwd" size="20"></td>
+                </tr>
+
+                <tr>
+                    <th>이름</th>
+                    <td><input type="text" name="name" size="20"></td>
+                </tr>
+                <tr>
+                    <th>이메일</th>
+                    <td><input type="text" name="email" size="20"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" name="회원가입">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#idBtn').click(function() {
+                alert("id button");
+                $.ajax({
+                    type: "post",
+                    url: "./idcheck",
+                    data: {
+                        id: $("#id").val()
+                    },
+                    success: function(data) {
+                        console.log(data.result);
+
+                        if (data.result == "YES") {
+                            $("#idcheck").css("color", "#0000ff");
+                            $("#idcheck").html("사용할 수 있는 아이디 입니다");
+                        } else {
+                            $("#idcheck").css("color", "#ff0000");
+                            $("#idcheck").html("사용중인 아이디 입니다");
+                            $("#id").val('');
+                        }
+                    },
+                    error: function() {
+                        alert("실ㅋ패ㅋ")
+                    }
+                })
+            })
+        });
+    </script>
+</body>
+
+</html>

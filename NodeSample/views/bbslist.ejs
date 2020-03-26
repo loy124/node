@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% 
+// 댓글의 여백과 이미지를 추가하는 함수
+function arrow(depth){
+   let rs = "<img src='/arrow' width='20px' height='20px'/>";
+   let nbsp = "&nbsp;&nbsp;&nbsp;&nbsp;";
+   
+   let ts = "";
+   for(i = 0;i < depth; i++){
+      ts += nbsp;
+   }
+   return depth==0?"":ts + rs;
+}
+%>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>bbslist</title>
+    </head>
+    <h1>게시판</h1>
+
+    <h3>환영합니다.
+        <%= user %>님 반갑습니다</h3>
+    <table border="1">
+        <col width="70">
+        <col width="500">
+        <col width="150">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+        </tr>
+
+        <% datas.forEach(function(data, index){
+    
+      %>
+            <tr>
+                <td>
+                    <%=index+1%>
+                </td>
+                <td>
+                    <%- arrow(data.DEPTH)%>
+                        <a href="/bbsdetail?seq=<%=data.SEQ %>">
+                            <%=data.TITLE%>
+                        </a>
+                </td>
+                <td>
+                    <%= data.ID %>
+                </td>
+            </tr>
+            <%
+    }); 
+    %>
+    </table>
+
+    <body>
+
+    </body>
+
+</html>
