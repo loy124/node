@@ -1,0 +1,16 @@
+{
+    "name": "exex11",
+    "version": "1.0.0",
+    "description": "node",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon index.js",
+        "dev": "node index.js"
+    },
+    "author": "이온유",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1",
+        "uuid4": "^1.1.4"
+    }
+}
